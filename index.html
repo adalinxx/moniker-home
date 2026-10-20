@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moniker: your @name, actually yours</title>
+<meta name="description" content="Claim an @handle no company can take, rename or charge you to keep, with one profile page that Lattice apps show.">
+<meta property="og:title" content="Moniker: your @name, actually yours">
+<meta property="og:description" content="Claim an @handle no company can take, rename or charge you to keep, with one profile page that Lattice apps show.">
+<link rel="icon" href="./brand/favicon.ico" sizes="any">
+<link rel="icon" href="./brand/favicon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "Public Sans"; font-weight: 400 700; font-display: swap; src: url(./fonts/public-sans.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: swap; src: url(./fonts/jetbrains-mono-400.woff2) format("woff2"); }
+:root {
+  --bg: #f3f1ec; --surface: #ffffff; --ink: #16181d; --soft: #2e323a; --muted: #4a4f5a; --line: #dad7cf; --hair: #ecEAe4;
+  --accent: #1f3fbf; --accent-ink: #ffffff; --avatar: #cfd6ef; --code: #16181d; --code-ink: #e9e7e1;
+  --body: "Public Sans", system-ui, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171b; --surface: #1f2228; --ink: #f1f0ec; --soft: #d9d8d3; --muted: #a9adb6; --line: #343842; --hair: #2a2d34;
+    --accent: #8fa6ff; --accent-ink: #10131c; --avatar: #343c5c; --code: #0e0f12; --code-ink: #e9e7e1;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 var(--body); }
+a { color: var(--accent); }
+button, input { font: inherit; color: inherit; }
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.dark-only { display: none; }
+@media (prefers-color-scheme: dark) { .light-only { display: none; } .dark-only { display: block; } }
+
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; padding-bottom: 20px; }
+.logo { display: inline-flex; min-height: 44px; align-items: center; }
+.logo img { width: 157.2px; height: 40px; }
+@media (max-width: 420px) { .logo img { width: 118px; height: 30px; } }
+nav { display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px; min-height: 44px; display: inline-flex; align-items: center; }
+@media (max-width: 560px) { nav .wide { display: none; } }
+
+.pill { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; cursor: pointer; }
+.pill.accent { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+nav a.pill { padding: 0 18px; }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 48px; align-items: center; padding-top: 48px; padding-bottom: 72px; }
+@media (max-width: 860px) { .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 24px; } }
+h1 { margin: 0; font-size: clamp(38px, 7vw, 64px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 700; }
+.lede { margin: 18px 0 0; font-size: clamp(18px, 2.2vw, 21px); color: var(--soft); max-width: 34ch; }
+
+.search { margin-top: 28px; display: flex; align-items: center; gap: 8px; min-height: 64px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); padding: 0 8px 0 22px; max-width: 520px; }
+.search:focus-within { border-color: var(--ink); }
+.search .at { font-family: var(--mono); font-size: 19px; color: var(--muted); }
+.search input { flex: 1; min-width: 0; height: 60px; border: 0; outline: none; background: transparent; font-family: var(--mono); font-size: 19px; }
+.search button { min-height: 50px; padding: 0 24px; border-radius: 999px; border: 0; background: var(--accent); color: var(--accent-ink); font-weight: 600; cursor: pointer; }
+.fine { margin: 12px 0 0 22px; font-size: 14px; color: var(--muted); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 32px 24px 28px; text-align: center; max-width: 380px; width: 100%; justify-self: center; position: relative; }
+.card .tag { position: absolute; top: 16px; left: 16px; font-size: 12px; font-weight: 600; color: var(--muted); background: var(--hair); border-radius: 999px; padding: 3px 10px; }
+.avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--avatar); margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 600; color: var(--soft); }
+.card h3 { margin: 16px 0 0; font-size: 22px; }
+.card .handle { margin: 2px auto 0; font-family: var(--mono); font-size: 15px; color: var(--accent); }
+.card p { margin: 10px auto 0; color: var(--soft); font-size: 15px; max-width: 30ch; }
+.card .links { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.card .links span { display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; border: 1px solid var(--line); font-weight: 500; font-size: 15px; }
+
+section { padding-top: 72px; padding-bottom: 8px; }
+h2 { margin: 0; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 700; max-width: 22ch; }
+.intro { margin: 14px 0 0; color: var(--soft); max-width: 60ch; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+@media (max-width: 860px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 24px; }
+.tile h3 { margin: 0; font-size: 19px; }
+.tile p { margin: 8px 0 0; color: var(--soft); font-size: 16px; }
+.num { display: inline-flex; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); align-items: center; justify-content: center; font-weight: 700; font-size: 15px; margin-bottom: 14px; }
+
+.facts { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; max-width: 720px; }
+.facts li { padding: 16px 20px; border-left: 3px solid var(--line); background: var(--surface); border-radius: 0 16px 16px 0; color: var(--soft); }
+.facts a { color: var(--muted); font-size: 14px; white-space: nowrap; }
+.promise { margin: 24px 0 0; font-size: 21px; font-weight: 600; max-width: 40ch; }
+
+.apps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+@media (max-width: 860px) { .apps { grid-template-columns: minmax(0, 1fr); } }
+.app { display: block; text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 24px; }
+a.app:hover { border-color: var(--ink); }
+.app b { font-size: 19px; }
+.app span { display: block; margin-top: 6px; color: var(--soft); font-size: 16px; }
+.app.yours { border-style: dashed; background: transparent; }
+
+pre { margin: 28px 0 0; background: var(--code); color: var(--code-ink); border-radius: 18px; padding: 20px 22px; overflow-x: auto; font: 14px/1.6 var(--mono); max-width: 760px; }
+
+.faq { margin-top: 28px; max-width: 760px; display: flex; flex-direction: column; gap: 10px; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 0 20px; }
+summary { cursor: pointer; font-weight: 600; min-height: 56px; display: flex; align-items: center; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; margin-left: auto; padding-left: 12px; font-size: 22px; color: var(--muted); }
+details[open] summary::after { content: "–"; }
+details p { margin: 0 0 18px; color: var(--soft); }
+
+.closing { text-align: center; padding-top: 96px; padding-bottom: 32px; }
+.closing h2 { margin: 0 auto; }
+.closing .search { margin: 28px auto 0; }
+.closing .fine { margin-left: 0; }
+
+footer { margin-top: 64px; padding-top: 28px; padding-bottom: 40px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 14px; }
+footer a { color: var(--muted); text-decoration: none; padding: 8px 0; }
+footer span { padding: 8px 0; margin-left: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="./" aria-label="Moniker home">
+      <img class="light-only" src="./brand/moniker-lockup-light.svg" alt="Moniker" width="393" height="100">
+      <img class="dark-only" src="./brand/moniker-lockup-dark.svg" alt="" width="393" height="100">
+    </a>
+    <nav>
+      <a class="wide" href="#how">How it works</a>
+      <a class="wide" href="#developers">Developers</a>
+      <a class="pill" href="https://adalinxx.github.io/moniker/app/" data-app>Open Moniker</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>Your @name. Actually yours.</h1>
+        <p class="lede">Claim a handle no company can take, rename or charge you to keep, and one profile page that apps show wherever you go.</p>
+        <form class="search" data-search>
+          <span class="at" aria-hidden="true">@</span>
+          <label class="sr" for="q">Search for a name</label>
+          <input id="q" name="q" placeholder="yourname" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="64">
+          <button>Check</button>
+        </form>
+        <p class="fine">Free to claim during the testnet trial. No renewals. Buying needs desktop Chrome.</p>
+      </div>
+      <div class="card" aria-label="An example Moniker page">
+        <span class="tag">Example</span>
+        <div class="avatar" aria-hidden="true">R</div>
+        <h3>Rae Okafor</h3>
+        <p class="handle">@rae</p>
+        <p>Illustrator. Zines, prints and the occasional mural.</p>
+        <div class="links" aria-hidden="true"><span>Portfolio</span><span>Shop</span><span>Newsletter</span></div>
+      </div>
+    </div>
+
+    <section aria-labelledby="get">
+      <h2 id="get">One name, one page, yours to keep</h2>
+      <div class="grid">
+        <div class="tile"><h3>An @handle</h3><p>Lowercase letters, digits and _. Whoever claims a free name first holds it, and only they can change, sell or give it away.</p></div>
+        <div class="tile"><h3>A page of your own</h3><p>Photo, name, a short bio and your links in the order you choose. Share one link everywhere.</p></div>
+        <div class="tile"><h3>Shown in other apps</h3><p>Apps on Lattice read the same page, so you set your name and photo once instead of in every app.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="why">
+      <h2 id="why">Handles get taken back. Pages disappear.</h2>
+      <ul class="facts">
+        <li>In 2023, X took the @music handle from the person who had run it for years, and @x from someone who had held it since 2007. <a href="https://www.rollingstone.com/culture/culture-news/twitter-seizes-music-handle-1234801321">Rolling Stone</a> · <a href="https://www.wfae.org/united-states-world/2023-07-28/the-man-who-once-tweeted-as-x-wasnt-informed-when-the-company-took-over-his-handle">NPR</a></li>
+        <li>When the link-in-bio service Bento closed in February 2026, its users' pages were deleted. <a href="https://alternativeto.net/news/2025/12/bento-to-shut-down-in-2026-as-linktree-takes-over-and-offers-migration-path/">AlternativeTo</a></li>
+      </ul>
+      <p class="promise">On Moniker there is no account to suspend. A key in your own browser holds your name, so Moniker can't take it, rename it or ask you to renew it.</p>
+    </section>
+
+    <section aria-labelledby="apps">
+      <h2 id="apps">Your page travels with you</h2>
+      <p class="intro">Every Lattice app reads one shared record of profiles and handles. These already show your Moniker name and photo:</p>
+      <div class="apps">
+        <a class="app" href="https://adalinxx.github.io/fanfare/"><b>Fanfare</b><span>Tickets straight from artists.</span></a>
+        <a class="app" href="https://adalinxx.github.io/stoa/"><b>Stoa</b><span>Communities and threads.</span></a>
+        <a class="app yours" href="#developers"><b>Your app</b><span>A few lines show a verified @handle.</span></a>
+      </div>
+    </section>
+
+    <section id="how" aria-labelledby="how-h">
+      <h2 id="how-h">How it works</h2>
+      <div class="grid">
+        <div class="tile"><span class="num">1</span><h3>Find your name</h3><p>Search for free. You'll see whether it's available, for sale by its owner, or taken, with close alternatives.</p></div>
+        <div class="tile"><span class="num">2</span><h3>Add Selfhold</h3><p>A free wallet extension for desktop Chrome. It keeps the key that proves the name is yours, on your computer, and asks you before anything is sent.</p></div>
+        <div class="tile"><span class="num">3</span><h3>Claim it and set up your page</h3><p>Approve once and the name is yours. Then add your photo, bio and links.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="sell">
+      <h2 id="sell">Pass it on when you want to</h2>
+      <p class="intro">Because the name is yours, you can give it to anyone or list it at your own price. A buyer pays you directly, in the same step that moves the name. Moniker takes nothing.</p>
+    </section>
+
+    <section id="developers" aria-labelledby="dev">
+      <h2 id="dev">For developers</h2>
+      <p class="intro">Show who someone is with <code>&lt;moniker-name&gt;</code>: their photo, name and @handle, linked to their page, read and checked from the network. No account system to build, and no profile database to keep.</p>
+<pre><code>import { createMoniker, defineMonikerName } from
+  "https://cdn.jsdelivr.net/gh/adalinxx/moniker-sdk@v0.1.2/src/browser.mjs";
+
+const moniker = createMoniker();
+defineMonikerName(moniker);
+
+// &lt;moniker-name address="bafyrei…" size="24"&gt;&lt;/moniker-name&gt;
+const who = await moniker.resolve("@rae");   // the holder's address</code></pre>
+      <p class="intro"><a href="https://github.com/adalinxx/moniker-sdk">moniker-sdk on GitHub</a> · <a href="https://adalinxx.github.io/moniker-sdk/demo.html">Live demo</a></p>
+    </section>
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">Questions</h2>
+      <div class="faq">
+        <details><summary>Why do I need a wallet extension?</summary><p>Your name belongs to a key, not to an account on our servers. Selfhold keeps that key on your computer and shows you each change before you approve it. Moniker never sees the key.</p></details>
+        <details><summary>Is this crypto? Do I need to buy anything?</summary><p>Moniker runs on Lattice, an open network. During the trial a free name costs nothing and there's no network fee, so you don't need any coins. Names someone is selling cost what their owner asks.</p></details>
+        <details><summary>Can I use it on my phone?</summary><p>You can search for names and view pages on any device. Claiming and editing need Selfhold, which runs in desktop Chrome. On a phone, Moniker gives you a link to finish on a computer.</p></details>
+        <details><summary>Do I have to renew it? Can Moniker take it back?</summary><p>No renewals. Moniker has no way to take, rename or reassign a name. It stays yours until you sell it, give it away or release it.</p></details>
+        <details><summary>What if I lose my computer?</summary><p>Write down Selfhold's recovery phrase, or keep its encrypted backup, when you set it up. With it you can restore your key, and your name, on another computer. Without it nobody can recover the name, including us.</p></details>
+        <details><summary>Someone already holds my name or brand. Can I get it?</summary><p>Only from them. If they've listed it, you can buy it at their price. Otherwise you can ask them. There's no dispute process that takes a name away.</p></details>
+        <details><summary>What does "testnet trial" mean for my name?</summary><p>Moniker currently runs on Lattice's test network so it can be tried for free. Test networks can be reset, so treat trial names as a preview, not a permanent record.</p></details>
+        <details><summary>Does a handle prove who someone is?</summary><p>It proves the page belongs to whoever holds @name. It doesn't prove they're the person or brand the name suggests.</p></details>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="end">
+      <h2 id="end">Find your name</h2>
+      <form class="search" data-search>
+        <span class="at" aria-hidden="true">@</span>
+        <label class="sr" for="q2">Search for a name</label>
+        <input id="q2" name="q" placeholder="yourname" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="64">
+        <button>Check</button>
+      </form>
+      <p class="fine">Free to claim during the testnet trial.</p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://adalinxx.github.io/moniker/app/" data-app>Open Moniker</a>
+    <a href="https://github.com/adalinxx/moniker">Source</a>
+    <a href="https://github.com/adalinxx/moniker-sdk">SDK</a>
+    <a href="https://chromewebstore.google.com/detail/amcobhbipbblfjonmoiicihhfglkhpce">Selfhold</a>
+    <span>Open source, MIT</span>
+  </footer>
+</div>
+<script>
+const APP = "https://adalinxx.github.io/moniker/app/";
+for (const form of document.querySelectorAll("[data-search]")) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const q = form.q.value.trim().toLowerCase().replace(/^@+/, "").replace(/\s+/g, "");
+    location.href = q ? `${APP}#/search/${encodeURIComponent(q)}` : APP;
+  });
+}
+</script>
+</body>
+</html>
