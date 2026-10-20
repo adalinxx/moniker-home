@@ -7,4 +7,5 @@ Moniker app.
 
 ```sh
 python3 -m http.server 8790   # then open http://127.0.0.1:8790/
+node test-site.mjs            # the checks CI runs
 ```
