@@ -1,7 +1,7 @@
 # moniker-home
 
 The landing page for [Moniker](https://github.com/adalinxx/moniker): an
-`@handle` you own, and one profile page Lattice apps show. A single static
+`@handle` you own, pointed at your account, which Lattice apps show. A single static
 `index.html` with Moniker's logo and fonts; the name search sends you to the
 Moniker app.
 

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Moniker: your @name, actually yours</title>
-<meta name="description" content="Claim an @handle no company can take, rename or charge you to keep, with one profile page that Lattice apps show.">
+<meta name="description" content="Claim an @handle no company can take, rename or charge you to keep, pointed at your account so every Lattice app shows it.">
 <meta property="og:title" content="Moniker: your @name, actually yours">
-<meta property="og:description" content="Claim an @handle no company can take, rename or charge you to keep, with one profile page that Lattice apps show.">
+<meta property="og:description" content="Claim an @handle no company can take, rename or charge you to keep, pointed at your account so every Lattice app shows it.">
 <link rel="icon" href="./brand/favicon.ico" sizes="any">
 <link rel="icon" href="./brand/favicon.svg" type="image/svg+xml">
 <style>
@@ -64,8 +64,6 @@ h1 { margin: 0; font-size: clamp(38px, 7vw, 64px); line-height: 1.04; letter-spa
 .card h3 { margin: 16px 0 0; font-size: 22px; }
 .card .handle { margin: 2px auto 0; font-family: var(--mono); font-size: 15px; color: var(--accent); }
 .card p { margin: 10px auto 0; color: var(--soft); font-size: 15px; max-width: 30ch; }
-.card .links { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
-.card .links span { display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; border: 1px solid var(--line); font-weight: 500; font-size: 15px; }
 
 section { padding-top: 72px; padding-bottom: 8px; }
 h2 { margin: 0; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 700; max-width: 22ch; }
@@ -130,7 +128,7 @@ footer span { padding: 8px 0; margin-left: auto; }
     <div class="hero">
       <div>
         <h1>Your @name. Actually yours.</h1>
-        <p class="lede">Claim a handle no company can take, rename or charge you to keep, and one profile page that apps show wherever you go.</p>
+        <p class="lede">Claim a handle no company can take, rename or charge you to keep. Point it at your account, and every Lattice app shows it.</p>
         <form class="search" data-search>
           <span class="at" aria-hidden="true">@</span>
           <label class="sr" for="q">Search for a name</label>
@@ -139,40 +137,38 @@ footer span { padding: 8px 0; margin-left: auto; }
         </form>
         <p class="fine">Free to claim during the testnet trial. No renewals. Buying needs desktop Chrome.</p>
       </div>
-      <div class="card" aria-label="An example Moniker page">
+      <div class="card" aria-label="An example of a name shown in an app">
         <span class="tag">Example</span>
         <div class="avatar" aria-hidden="true">R</div>
         <h3>Rae Okafor</h3>
         <p class="handle">@rae</p>
-        <p>Illustrator. Zines, prints and the occasional mural.</p>
-        <div class="links" aria-hidden="true"><span>Portfolio</span><span>Shop</span><span>Newsletter</span></div>
+        <p>The app knows this account as Rae Okafor. @rae shows because its holder points it here.</p>
       </div>
     </div>
 
     <section aria-labelledby="get">
-      <h2 id="get">One name, one page, yours to keep</h2>
+      <h2 id="get">One name, yours to keep</h2>
       <div class="grid">
         <div class="tile"><h3>An @handle</h3><p>Lowercase letters, digits and _. Whoever claims a free name first holds it, and only they can change, sell or give it away.</p></div>
-        <div class="tile"><h3>A page of your own</h3><p>Photo, name, a short bio and your links in the order you choose. Share one link everywhere.</p></div>
-        <div class="tile"><h3>Shown in other apps</h3><p>Apps on Lattice read the same page, so you set your name and photo once instead of in every app.</p></div>
+        <div class="tile"><h3>Pointed at your account</h3><p>Point the name at your account and it shows beside you. Point it somewhere else, or nowhere, whenever you like.</p></div>
+        <div class="tile"><h3>Shown in every app</h3><p>Apps on Lattice check the same record of names, so @rae looks the same everywhere, and only on the account it points at.</p></div>
       </div>
     </section>
 
     <section aria-labelledby="why">
-      <h2 id="why">Handles get taken back. Pages disappear.</h2>
+      <h2 id="why">Handles get taken back.</h2>
       <ul class="facts">
         <li>In 2023, X took the @music handle from the person who had run it for years, and @x from someone who had held it since 2007. <a href="https://www.rollingstone.com/culture/culture-news/twitter-seizes-music-handle-1234801321">Rolling Stone</a> · <a href="https://www.wfae.org/united-states-world/2023-07-28/the-man-who-once-tweeted-as-x-wasnt-informed-when-the-company-took-over-his-handle">NPR</a></li>
-        <li>When the link-in-bio service Bento closed in February 2026, its users' pages were deleted. <a href="https://alternativeto.net/news/2025/12/bento-to-shut-down-in-2026-as-linktree-takes-over-and-offers-migration-path/">AlternativeTo</a></li>
       </ul>
       <p class="promise">On Moniker there is no account to suspend. A key in your own browser holds your name, so Moniker can't take it, rename it or ask you to renew it.</p>
     </section>
 
     <section aria-labelledby="apps">
-      <h2 id="apps">Your page travels with you</h2>
-      <p class="intro">Every Lattice app reads one shared record of profiles and handles. These already show your Moniker name and photo:</p>
+      <h2 id="apps">Your name travels with you</h2>
+      <p class="intro">Lattice apps read one shared record of names. These already show your Moniker name:</p>
       <div class="apps">
-        <a class="app" href="https://adalinxx.github.io/fanfare/"><b>Fanfare</b><span>Tickets straight from artists.</span></a>
-        <a class="app" href="https://adalinxx.github.io/stoa/"><b>Stoa</b><span>Communities and threads.</span></a>
+        <a class="app" href="https://adalinxx.github.io/follows/app/"><b>Follows</b><span>Follow people by account or @name.</span></a>
+        <a class="app" href="https://adalinxx.github.io/rave/"><b>Rave</b><span>Reviews of places no company owns.</span></a>
         <a class="app yours" href="#developers"><b>Your app</b><span>A few lines show a verified @handle.</span></a>
       </div>
     </section>
@@ -182,26 +178,26 @@ footer span { padding: 8px 0; margin-left: auto; }
       <div class="grid">
         <div class="tile"><span class="num">1</span><h3>Find your name</h3><p>Search for free. You'll see whether it's available, for sale by its owner, or taken, with close alternatives.</p></div>
         <div class="tile"><span class="num">2</span><h3>Add Selfhold</h3><p>A free wallet extension for desktop Chrome. It keeps the key that proves the name is yours, on your computer, and asks you before anything is sent.</p></div>
-        <div class="tile"><span class="num">3</span><h3>Claim it and set up your page</h3><p>Approve once and the name is yours. Then add your photo, bio and links.</p></div>
+        <div class="tile"><span class="num">3</span><h3>Claim it and point it at you</h3><p>Approve once and the name is yours, pointed at your account. Apps show it from then on.</p></div>
       </div>
     </section>
 
     <section aria-labelledby="sell">
       <h2 id="sell">Pass it on when you want to</h2>
-      <p class="intro">Because the name is yours, you can give it to anyone or list it at your own price. A buyer pays you directly, in the same step that moves the name. Moniker takes nothing.</p>
+      <p class="intro">Because the name is yours, you can give it to anyone or list it at your own price. A buyer pays you directly, in the same step that moves the name. A sale moves only the name: your account, and everything you wrote in apps, stays yours. Moniker takes nothing.</p>
     </section>
 
     <section id="developers" aria-labelledby="dev">
       <h2 id="dev">For developers</h2>
-      <p class="intro">Show who someone is with <code>&lt;moniker-name&gt;</code>: their photo, name and @handle, linked to their page, read and checked from the network. No account system to build, and no profile database to keep.</p>
+      <p class="intro">Show who someone is with <code>&lt;moniker-name&gt;</code>: the name your app knows them by and their verified @handle, read and checked from the network. Keep your own records, cards included, keyed by account; there is no handle system to build.</p>
 <pre><code>import { createMoniker, defineMonikerName } from
-  "https://cdn.jsdelivr.net/gh/adalinxx/moniker-sdk@v0.1.2/src/browser.mjs";
+  "https://cdn.jsdelivr.net/gh/adalinxx/moniker-sdk@v0.3.0/src/browser.mjs";
 
 const moniker = createMoniker();
 defineMonikerName(moniker);
 
-// &lt;moniker-name address="bafyrei…" size="24"&gt;&lt;/moniker-name&gt;
-const who = await moniker.resolve("@rae");   // the holder's address</code></pre>
+// &lt;moniker-name address="bafyrei…" name="Rae Okafor" size="24"&gt;&lt;/moniker-name&gt;
+const handle = await moniker.handleOf(address);   // "rae", or undefined</code></pre>
       <p class="intro"><a href="https://github.com/adalinxx/moniker-sdk">moniker-sdk on GitHub</a> · <a href="https://adalinxx.github.io/moniker-sdk/demo.html">Live demo</a></p>
     </section>
 
@@ -214,8 +210,8 @@ const who = await moniker.resolve("@rae");   // the holder's address</code></pre
         <details><summary>Do I have to renew it? Can Moniker take it back?</summary><p>No renewals. Moniker has no way to take, rename or reassign a name. It stays yours until you sell it, give it away or release it.</p></details>
         <details><summary>What if I lose my computer?</summary><p>Write down Selfhold's recovery phrase, or keep its encrypted backup, when you set it up. With it you can restore your key, and your name, on another computer. Without it nobody can recover the name, including us.</p></details>
         <details><summary>Someone already holds my name or brand. Can I get it?</summary><p>Only from them. If they've listed it, you can buy it at their price. Otherwise you can ask them. There's no dispute process that takes a name away.</p></details>
-        <details><summary>What does "testnet trial" mean for my name?</summary><p>Moniker currently runs on Lattice's test network so it can be tried for free. Test networks can be reset, so treat trial names as a preview, not a permanent record.</p></details>
-        <details><summary>Does a handle prove who someone is?</summary><p>It proves the page belongs to whoever holds @name. It doesn't prove they're the person or brand the name suggests.</p></details>
+        <details><summary>What does "testnet trial" mean for my name?</summary><p>Moniker currently runs on Lattice's test network so it can be tried for free. Test networks can be reset, so treat trial names as a preview, not a permanent record. Names claimed on earlier trials didn't carry over.</p></details>
+        <details><summary>Does a handle prove who someone is?</summary><p>It proves whoever holds @name points it at that account. It doesn't prove they're the person or brand the name suggests.</p></details>
       </div>
     </section>
 
