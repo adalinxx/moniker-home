@@ -135,7 +135,7 @@ footer span { padding: 8px 0; margin-left: auto; }
           <input id="q" name="q" placeholder="yourname" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="64">
           <button>Check</button>
         </form>
-        <p class="fine">Free to claim during the testnet trial. No renewals. Buying needs desktop Chrome.</p>
+        <p class="fine">Free to claim. No renewals. Nothing to install: your account is a passkey.</p>
       </div>
       <div class="card" aria-label="An example of a name shown in an app">
         <span class="tag">Example</span>
@@ -177,7 +177,7 @@ footer span { padding: 8px 0; margin-left: auto; }
       <h2 id="how-h">How it works</h2>
       <div class="grid">
         <div class="tile"><span class="num">1</span><h3>Find your name</h3><p>Search for free. You'll see whether it's available, for sale by its owner, or taken, with close alternatives.</p></div>
-        <div class="tile"><span class="num">2</span><h3>Add Selfhold</h3><p>A free wallet extension for desktop Chrome. It keeps the key that proves the name is yours, on your computer, and asks you before anything is sent.</p></div>
+        <div class="tile"><span class="num">2</span><h3>Make your account</h3><p>Selfhold opens in a window and makes your account with a passkey, kept by your password manager. Nothing to install. It asks you before anything is sent.</p></div>
         <div class="tile"><span class="num">3</span><h3>Claim it and point it at you</h3><p>Approve once and the name is yours, pointed at your account. Apps show it from then on.</p></div>
       </div>
     </section>
@@ -204,13 +204,13 @@ const handle = await moniker.handleOf(address);   // "rae", or undefined</code><
     <section aria-labelledby="faq">
       <h2 id="faq">Questions</h2>
       <div class="faq">
-        <details><summary>Why do I need a wallet extension?</summary><p>Your name belongs to a key, not to an account on our servers. Selfhold keeps that key on your computer and shows you each change before you approve it. Moniker never sees the key.</p></details>
-        <details><summary>Is this crypto? Do I need to buy anything?</summary><p>Moniker runs on Lattice, an open network. During the trial a free name costs nothing and there's no network fee, so you don't need any coins. Names someone is selling cost what their owner asks.</p></details>
-        <details><summary>Can I use it on my phone?</summary><p>You can search for names and view pages on any device. Claiming and editing need Selfhold, which runs in desktop Chrome. On a phone, Moniker gives you a link to finish on a computer.</p></details>
+        <details><summary>Why do I need a wallet?</summary><p>Your name belongs to a key, not to an account on our servers. Selfhold makes that key from your passkey and shows you each change before you approve it. Moniker never sees the key. Rather keep the key in an extension? Selfhold for Chrome does that, on your computer.</p></details>
+        <details><summary>Is this crypto? Do I need to buy anything?</summary><p>Moniker runs on Lattice, an open network. A free name costs nothing, and its network fee is paid with a few seconds of your device's work, so you don't need any coins. Names someone is selling cost what their owner asks, in coins.</p></details>
+        <details><summary>Can I use it on my phone?</summary><p>Yes: search, claim and edit names in a phone browser that supports passkeys. Paying the network fee with a phone's own work is still being tuned, so for now a phone may ask for a few coins instead. Selfhold for Chrome, the extension, is for desktop Chrome only.</p></details>
         <details><summary>Do I have to renew it? Can Moniker take it back?</summary><p>No renewals. Moniker has no way to take, rename or reassign a name. It stays yours until you sell it, give it away or release it.</p></details>
-        <details><summary>What if I lose my computer?</summary><p>Write down Selfhold's recovery phrase, or keep its encrypted backup, when you set it up. With it you can restore your key, and your name, on another computer. Without it nobody can recover the name, including us.</p></details>
+        <details><summary>What if I lose my phone or computer?</summary><p>Your passkey lives in your password manager, such as iCloud Keychain or Google Password Manager, which syncs it to your other devices, and your account and names come with it. With Selfhold for Chrome, write down its recovery phrase or keep its encrypted backup instead. Without the passkey or the phrase, nobody can recover the name, including us.</p></details>
         <details><summary>Someone already holds my name or brand. Can I get it?</summary><p>Only from them. If they've listed it, you can buy it at their price. Otherwise you can ask them. There's no dispute process that takes a name away.</p></details>
-        <details><summary>What does "testnet trial" mean for my name?</summary><p>Moniker currently runs on Lattice's test network so it can be tried for free. Test networks can be reset, so treat trial names as a preview, not a permanent record. Names claimed on earlier trials didn't carry over.</p></details>
+        <details><summary>What happened to names from the testnet trial?</summary><p>The trial ran on Lattice's test network, which could be reset. Moniker now runs on Lattice's main network, and names claimed during the trial didn't carry over.</p></details>
         <details><summary>Does a handle prove who someone is?</summary><p>It proves whoever holds @name points it at that account. It doesn't prove they're the person or brand the name suggests.</p></details>
       </div>
     </section>
@@ -223,7 +223,7 @@ const handle = await moniker.handleOf(address);   // "rae", or undefined</code><
         <input id="q2" name="q" placeholder="yourname" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="64">
         <button>Check</button>
       </form>
-      <p class="fine">Free to claim during the testnet trial.</p>
+      <p class="fine">Free to claim. No renewals.</p>
     </section>
   </main>
 
@@ -231,7 +231,7 @@ const handle = await moniker.handleOf(address);   // "rae", or undefined</code><
     <a href="https://app.moniker.bio/app/" data-app>Open Moniker</a>
     <a href="https://github.com/adalinxx/moniker">Source</a>
     <a href="https://github.com/adalinxx/moniker-sdk">SDK</a>
-    <a href="https://chromewebstore.google.com/detail/amcobhbipbblfjonmoiicihhfglkhpce">Selfhold</a>
+    <a href="https://selfhold.app/">Selfhold</a>
     <span>Open source, MIT</span>
   </footer>
 </div>
